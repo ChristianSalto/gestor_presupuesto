@@ -1,0 +1,20 @@
+.container .form {
+  border-radius: 10px;
+  padding: 1rem;
+  background-color: rgb(255, 245, 232);
+  margin-top: 3rem;
+  width: 90%;
+}
+
+.container .form h2 {
+  padding: 1rem;
+  color: rgb(70, 2, 7);
+}
+
+.inpt-submit {
+  background-color: rgb(126, 0, 59);
+  color: bisque;
+  margin-top: 1rem;
+  font-weight: bold;
+  padding: 0.6rem;
+}
