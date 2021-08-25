@@ -1,0 +1,14 @@
+.list-spending {
+  list-style: none;
+}
+
+.list-spending p {
+  display: flex;
+  border-bottom: 1px solid;
+  justify-content: space-between;
+}
+
+.list-spending p span {
+  background: black;
+  padding: 0.5rem;
+}

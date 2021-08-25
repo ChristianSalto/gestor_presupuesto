@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import { Error } from '../Error/Error';
 import './styles.css';
 
-export const Presupuesto = () => {
+export const Presupuesto = ({ setPresupuesto, setResto, setShowMsj }) => {
 
   const [amount, setAmount] = useState(0);
+  const [err, setErr] = useState(false);
 
 
   // manejador del onChenge
@@ -16,12 +18,23 @@ export const Presupuesto = () => {
   // manejado del onSubmit
   const handleOnSubmit = e => {
     e.preventDefault();
-    console.log(amount)
+
+    if (amount < 1 || isNaN(amount)) {
+      setErr(true);
+      return;
+    }
+
+    setErr(false);
+    setPresupuesto(amount);
+    setResto(amount);
+    setShowMsj(false);
+
   }
 
   return (
     <div className="container form">
       <h2>Añade tu presupuesto</h2>
+      {err ? <Error msj="Importe incorrecto" /> : null}
       <form
         onSubmit={handleOnSubmit}>
         <input

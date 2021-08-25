@@ -1,0 +1,65 @@
+import React, { useState } from 'react';
+import { Error } from '../Error/Error';
+import shortid from 'shortid';
+import './styles.css';
+
+export const Form = ({ setAddSpending, setAddExpense, setCheckAddSpending }) => {
+
+  const [name, setName] = useState('');
+  const [spending, setSpending] = useState('');
+  const [error, setError] = useState(false);
+
+
+  const handleSpending = (e) => {
+    e.preventDefault();
+
+
+    if (spending < 1 || isNaN(spending) || name.trim() === '') {
+      setError(true);
+      return;
+    }
+
+    setError(false)
+
+
+    const data = {
+      name,
+      spending,
+      id: shortid.generate(),
+    }
+
+    setAddSpending(data);
+    setCheckAddSpending(true);
+
+
+    setName('')
+    setSpending(0);
+  }
+
+  return (
+    <form onSubmit={handleSpending}>
+      <h2 className="title-form mt-4 mb-4">Ingrese el gasto</h2>
+      <div className="col-12 text-start">
+        <label className="col-form-label">Tipo de gasto : </label>
+        <input type="text"
+          className="form-control"
+          placeholder="Ej. Comida"
+          value={name}
+          onChange={e => setName(e.target.value)} />
+      </div>
+      <div className="col-12 text-start mb-4">
+        <label className="col-form-label">Cantidad de gasto : </label>
+        <input type="number"
+          className="form-control"
+          placeholder="Ej. Cantidad -> 300"
+          value={spending}
+          onChange={e => setSpending(parseInt(e.target.value, 10))} />
+      </div>
+
+      <input type="submit" className="btn btn-primary col-12 mb-4" value="Añadir gasto" />
+      {error ? (
+        <Error msj="Ambos campos son obligatorios !!!" />
+      ) : (null)}
+    </form>
+  )
+}
