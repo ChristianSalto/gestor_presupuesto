@@ -9,6 +9,7 @@
 }
 
 .list-spending p span {
-  background: black;
+  background: #4e1d1d;
   padding: 0.5rem;
+  border-radius: 10px;
 }

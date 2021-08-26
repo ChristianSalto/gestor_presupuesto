@@ -3,7 +3,7 @@ import { Error } from '../Error/Error';
 import shortid from 'shortid';
 import './styles.css';
 
-export const Form = ({ setAddSpending, setAddExpense, setCheckAddSpending }) => {
+export const Form = ({ setAddSpending, setShowMsj, setCheckAddSpending }) => {
 
   const [name, setName] = useState('');
   const [spending, setSpending] = useState('');
@@ -19,6 +19,7 @@ export const Form = ({ setAddSpending, setAddExpense, setCheckAddSpending }) => 
       return;
     }
 
+
     setError(false)
 
 
@@ -28,8 +29,10 @@ export const Form = ({ setAddSpending, setAddExpense, setCheckAddSpending }) => 
       id: shortid.generate(),
     }
 
+
     setAddSpending(data);
     setCheckAddSpending(true);
+
 
 
     setName('')
@@ -56,7 +59,8 @@ export const Form = ({ setAddSpending, setAddExpense, setCheckAddSpending }) => 
           onChange={e => setSpending(parseInt(e.target.value, 10))} />
       </div>
 
-      <input type="submit" className="btn btn-primary col-12 mb-4" value="Añadir gasto" />
+      <input type="submit" className="btn btn-primary col-12 mb-2" value="Añadir gasto" />
+      <button className="btn btn-success col-12 mb-5" onClick={e => setShowMsj(true)}>Añadir nuevo presupuesto</button>
       {error ? (
         <Error msj="Ambos campos son obligatorios !!!" />
       ) : (null)}

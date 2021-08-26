@@ -3,6 +3,7 @@ import { Presupuesto } from './component/Presupuesto/Presupuesto';
 import { Form } from './component/Form/Form';
 import { List } from './component/List/List';
 import { ControlPresupuesto } from './component/ControlPresupuesto/ControlPresupuesto';
+import { Error } from './component/Error/Error';
 
 const App = () => {
   const [presupuesto, setPresupuesto] = useState(0);
@@ -15,24 +16,26 @@ const App = () => {
 
   useEffect(() => {
     if (checkAddSpending) {
-      setAddExpense([
-        ...addExpense,
-        addSpending
-      ]);
-
-      const restPresupuesto = resto - addSpending.spending
-      setResto(restPresupuesto);
-
-      setCheckAddSpending(false);
+      if (addSpending.spending <= resto) {
+        setAddExpense([
+          ...addExpense,
+          addSpending
+        ]);
+        const restPresupuesto = resto - addSpending.spending
+        setResto(restPresupuesto);
+        setCheckAddSpending(false);
+      } else {
+        setCheckAddSpending(true);
+      }
     }
-  }, [addSpending])
+  }, [addSpending, addExpense, checkAddSpending, resto])
 
 
   return (
     <div className="container">
       <header>
         <h1>Gestor de presupuesto</h1>
-        <div>
+        <div className="bg-secondary p-5 rounded">
           {showMsj ? (
             <Presupuesto
               setPresupuesto={setPresupuesto}
@@ -43,7 +46,7 @@ const App = () => {
               <div className="col">
                 <Form
                   setAddSpending={setAddSpending}
-                  setAddExpense={setAddExpense}
+                  setShowMsj={setShowMsj}
                   setCheckAddSpending={setCheckAddSpending} />
               </div>
               <div className="col">
@@ -51,6 +54,9 @@ const App = () => {
                 <ControlPresupuesto
                   presupuesto={presupuesto}
                   resto={resto} />
+                {checkAddSpending ? (
+                  <Error msj={`${addSpending.spending} $ supera tu saldo ${resto} $`} />
+                ) : (null)}
               </div>
             </div>
           )}
