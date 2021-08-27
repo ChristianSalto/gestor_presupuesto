@@ -1,0 +1,41 @@
+@font-face {
+  font-family: "icomoon";
+  src: url("fonts/icomoon.eot?caqxl2");
+  src: url("fonts/icomoon.eot?caqxl2#iefix") format("embedded-opentype"),
+    url("fonts/icomoon.ttf?caqxl2") format("truetype"),
+    url("fonts/icomoon.woff?caqxl2") format("woff"),
+    url("fonts/icomoon.svg?caqxl2#icomoon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"],
+[class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: "icomoon" !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  font-size: 30px;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-moneybag:before {
+  content: "\e906";
+}
+.icon-dollar:before {
+  content: "\e907";
+}
+.icon-x-octagon:before {
+  content: "\e908";
+  font-size: 20px;
+  display: flex;
+  margin: 10px;
+}

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Error } from '../Error/Error';
 import shortid from 'shortid';
+import PropTypes from 'prop-types';
+import { Error } from '../Error/Error';
 import './styles.css';
 
 export const Form = ({ setAddSpending, setShowMsj, setCheckAddSpending }) => {
@@ -66,4 +67,11 @@ export const Form = ({ setAddSpending, setShowMsj, setCheckAddSpending }) => {
       ) : (null)}
     </form>
   )
+}
+
+
+Form.protoType = {
+  setAddSpending: PropTypes.func.isRequired,
+  setShowMsj: PropTypes.func.isRequired,
+  setCheckAddSpending: PropTypes.func.isRequired,
 }

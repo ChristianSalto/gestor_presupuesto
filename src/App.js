@@ -4,6 +4,8 @@ import { Form } from './component/Form/Form';
 import { List } from './component/List/List';
 import { ControlPresupuesto } from './component/ControlPresupuesto/ControlPresupuesto';
 import { Error } from './component/Error/Error';
+import { RemoveProvider } from './RemoveContext'
+
 
 const App = () => {
   const [presupuesto, setPresupuesto] = useState(0);
@@ -31,6 +33,23 @@ const App = () => {
   }, [addSpending, addExpense, checkAddSpending, resto])
 
 
+
+
+  const removeSpending = (id) => {
+
+    const newAddExpense = addExpense.filter(e => {
+
+      if (e.id === id) setResto(resto + e.spending)
+      return e.id !== id;
+
+    })
+
+    setAddExpense(newAddExpense)
+    setCheckAddSpending(false)
+
+  }
+
+
   return (
     <div className="container">
       <header>
@@ -50,7 +69,9 @@ const App = () => {
                   setCheckAddSpending={setCheckAddSpending} />
               </div>
               <div className="col">
-                <List data={addExpense} />
+                <RemoveProvider value={removeSpending}>
+                  <List data={addExpense} />
+                </RemoveProvider>
                 <ControlPresupuesto
                   presupuesto={presupuesto}
                   resto={resto} />

@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { Error } from '../Error/Error';
 import './styles.css';
+
 
 export const Presupuesto = ({ setPresupuesto, setResto, setShowMsj }) => {
 
@@ -46,4 +48,10 @@ export const Presupuesto = ({ setPresupuesto, setResto, setShowMsj }) => {
       </form>
     </div>
   )
+}
+
+Presupuesto.protoType = {
+  setResto: PropTypes.func.isRequired,
+  setShowMsj: PropTypes.func.isRequired,
+  setPresupuesto: PropTypes.func.isRequired,
 }

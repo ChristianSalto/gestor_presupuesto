@@ -1,15 +1,23 @@
 .list-spending {
   list-style: none;
-}
-
-.list-spending p {
-  display: flex;
   border-bottom: 1px solid;
-  justify-content: space-between;
 }
 
-.list-spending p span {
+.list-spending div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sp-spending {
   background: #4e1d1d;
-  padding: 0.5rem;
+  padding: 0.2rem 0.5rem;
   border-radius: 10px;
+  margin-top: 5px;
+}
+
+.icon-x-octagon {
+  height: 45px;
+  margin-left: 10px;
+  cursor: pointer;
 }
